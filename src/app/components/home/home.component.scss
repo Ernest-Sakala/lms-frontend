@@ -1,0 +1,72 @@
+.container-hero {
+  height: 600px;
+  background-image: url("../../../assets/issabelle.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  color: #ffe400;
+}
+
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 250px;
+  align-items: center;
+}
+
+.slider {
+  height: 250px;
+  width: 700px;
+}
+
+.slider img {
+  height: 250px;
+  width: 700px;
+}
+
+.weather {
+  padding: 0 0.5rem 0 0.5rem;
+  text-align: center;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.cards {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.card {
+  height: 400px;
+  padding: 20px 20px 0 20px;
+  text-align: center;
+  margin: 5px;
+}
+
+.cards img {
+  height: 350px;
+  width: 320px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  height: 200px;
+  color: #ffe400;
+  background-color: #2a8bff;
+}
+
+footer div {
+  padding: 40px;
+}
