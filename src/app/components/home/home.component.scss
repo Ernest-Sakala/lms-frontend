@@ -5,8 +5,8 @@
   background-size: cover;
   display: flex;
   align-items: center;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-end;
   color: #ffe400;
 }
 
@@ -69,4 +69,52 @@ footer {
 
 footer div {
   padding: 40px;
+}
+
+.form-container {
+  width: 400px;
+  padding-top: 20px;
+  height: 470px;
+  color: #000000;
+  background-color: white;
+  margin-right: 30px;
+  display: flex;
+  border-radius: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.sub {
+  margin-bottom: 40px;
+}
+
+.border-container {
+  border-top: solid #000000 0.5px;
+}
+
+.bottom-container {
+  border-bottom: solid #000000 0.5px;
+}
+button {
+  width: 300px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: none;
+  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #14a76c;
+  border-radius: 10px;
+  background-color: #ffe400;
 }

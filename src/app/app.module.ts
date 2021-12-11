@@ -9,22 +9,26 @@ import { MaterialModule} from './material/material/material.module';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FormsModule,
     RouterModule.forRoot(
       [
         {path : '', component : HomeComponent },
-       
+        {path : 'register' , component : RegisterComponent}
    
       ]
     ),

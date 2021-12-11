@@ -1,6 +1,78 @@
 <div class = "container-hero">
 
+
+     <div class = "form-container">
+
+        <div class = "content">
+
+          <label>How much do you need ?</label>
+
+          <input [(ngModel)] = "loan"> 
+
+        </div>
+        
+        <div class = "content sub">
+
+          <label>Subscription Plan</label>
+
+          <select [(ngModel)] = "monthNumber"  (change) = "changed()">
+           
+             <option *ngFor = "let month of months"> {{ month.months}} <option>
+          </select>
+
+        </div>
+
    
+        <div  class = "content border-container">
+
+          <h3>Interest</h3>
+
+          <h2>1000</h2>
+        </div>
+
+        
+
+        <div  class = "content border-container">
+
+          <h3>Total To Repay</h3>
+
+          <h2>1000</h2>
+        </div>
+
+       
+        <div  class = "content border-container bottom-container">
+
+          <h3>Repayment Date</h3>
+
+          <h2>1000</h2>
+        </div>
+
+
+        
+       <a routerLink="register"><button>Apply Now</button></a>  
+
+
+        <div  class = "content">
+
+          <h3>New User</h3>
+
+          <h2>(K500 - K 5,000)</h2>
+        </div>
+
+      
+        <div  class = "content ">
+
+          <h3>Returning User </h3>
+
+          <h2>(K500 - 15, 000)</h2>
+        </div>
+
+
+
+     </div>
+        
+  
+
    
 
 </div>
@@ -118,8 +190,6 @@
 
 
     <div>
-
-
         
         Images From Splash Website For Illustration Only
 
