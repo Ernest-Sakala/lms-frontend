@@ -1,0 +1,24 @@
+
+
+<div>
+
+
+
+    <form  #login="ngForm" (ngSubmit) = "loginUser(login.value)" >
+
+        <div id="result" style="display: none"></div>
+    
+        <label> Type your Email</label>
+        <input class ="pass" type="text" ngModel name="email" /> <br />
+    
+        <label> Type your password</label>
+        <input class ="pass" type="password" ngModel name="password"/><br />
+    
+        <input class ="btn" type="submit"  value="Login"/>
+    
+      </form>
+    
+</div>
+
+
+

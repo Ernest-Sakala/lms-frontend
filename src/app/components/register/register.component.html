@@ -1,1 +1,33 @@
-<p>register works!</p>
+<section>
+
+    <div>
+    
+ 
+      <form class = "register-form" #register = "ngForm" (ngSubmit) = "registerUser(register.value)" >
+    
+    
+            <label> Type your Name</label>
+            <input class ="pass" type="text" name="username" ngModel /> <br />
+    
+    
+            <label> Type your Email</label>
+            <input class ="pass" type="text" name="email" ngModel /> <br /> 
+    
+            <label> Type your Number</label>
+            <input class ="pass" type="text" name="phone" ngModel /> <br />
+        
+        
+            <label> Type your password</label>
+            <input class ="pass" type="password" name="password" ngModel/> <br />
+        
+    
+            <label>Re-type your password</label>
+            <input class ="pass" type="password" name="password-repeat" ngModel /><br />
+        
+            <input [disabled] = "submitted"class ="btn" type = "submit" value="Register"/>
+        
+          </form>
+        
+    </div>
+    
+    </section>
