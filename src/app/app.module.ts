@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ClientComponent } from './components/client/client.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    ClientComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +32,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    FlexLayoutModule,
     FormsModule,
     RouterModule.forRoot(
       [
