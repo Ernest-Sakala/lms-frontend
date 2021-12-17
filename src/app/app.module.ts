@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { LoginComponent } from './components/login/login.component';
     HeaderComponent,
     HomeComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { LoginComponent } from './components/login/login.component';
       [
         {path : '', component : HomeComponent },
         {path : 'register' , component : RegisterComponent},
-        {path : 'login' , component : LoginComponent}
+        {path : 'login' , component : LoginComponent},
+        {path : 'admin' , component : AdminComponent}
    
       ]
     ),
