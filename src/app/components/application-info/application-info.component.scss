@@ -1,0 +1,33 @@
+.container-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio-container {
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 5px #000;
+}
+
+form {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+  width: 300px;
+}

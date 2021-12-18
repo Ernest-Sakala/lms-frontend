@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   image:string = "../../assets/placeholder.png";
 
   constructor(public nav : NavbarService,private userService :UserService) { 
-    nav.hide();
+    nav.show();
   }
 
   ngOnInit(): void {

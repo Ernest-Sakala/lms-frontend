@@ -7,9 +7,15 @@ import { NavbarService } from './service/navbar.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'lms-frontend';
+  isCollapsed = false;
+
+
+
 
   constructor(public nav : NavbarService){
+
     
   }
+
+
 }

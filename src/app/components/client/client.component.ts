@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarService } from 'src/app/service/navbar.service';
 
 @Component({
   selector: 'app-client',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientComponent implements OnInit {
 
-  constructor() { }
+ 
+
+  isCollapsed = false
+ 
+
+  constructor(public nav : NavbarService) {
+      this.nav.hide()
+  }
 
   ngOnInit(): void {
+   
   }
+
 
 }

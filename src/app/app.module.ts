@@ -15,6 +15,18 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ClientComponent } from './components/client/client.component';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { IconsProviderModule } from './icons-provider.module';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { AntModule } from './material/ant/ant.module';
+import { LoansComponent } from './components/loans/loans.component';
+import { ApplicationInfoComponent } from './components/application-info/application-info.component'
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -24,7 +36,9 @@ import { ClientComponent } from './components/client/client.component';
     RegisterComponent,
     LoginComponent,
     AdminComponent,
-    ClientComponent
+    ClientComponent,
+    LoansComponent,
+    ApplicationInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -34,18 +48,40 @@ import { ClientComponent } from './components/client/client.component';
     HttpClientModule,
     FlexLayoutModule,
     FormsModule,
+    AntModule,
     RouterModule.forRoot(
       [
         {path : '', component : HomeComponent },
         {path : 'register' , component : RegisterComponent},
+        {path : 'register/application-info' , component : ApplicationInfoComponent},
         {path : 'login' , component : LoginComponent},
-        {path : 'admin' , component : AdminComponent}
+        {
+          path : 'admin' , 
+          component : AdminComponent,
+          'children' : [
+
+            {path : '', component :LoansComponent}
+
+          ]
+        },
+        {
+          path : 'client' , 
+          component : AdminComponent,
+          'children' : [
+
+            {path : '', component :LoansComponent}
+
+          ]
+        }
    
       ]
     ),
-    NgbModule
+    NgbModule,
+    IconsProviderModule,
+    NzLayoutModule,
+    NzMenuModule
   ],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

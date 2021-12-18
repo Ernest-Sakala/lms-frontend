@@ -1,35 +1,59 @@
-<mat-toolbar color = "primary">
-    <button mat-icon-button (click)="sidenav.toggle()" class="menu-button" fxHide fxShow.lt-md>
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span [ngClass]="{ 'hidden': opened ? false : true }"></span>
-    <span>
-    </span>
-    <span class="head-menu"></span>
-    <div class="row">
-      <button mat-button (click)="signout()">
-        <mat-icon>logout</mat-icon> Sign Out
-      </button>
-    </div>
-  </mat-toolbar>
-  <mat-sidenav-container>
-    <mat-sidenav #sidenav [mode]="opened === false ? 'over' : 'side'" [opened]="opened === true">
-      <mat-nav-list>
-        <div style="text-align: center;">
-          <img class="avatar mat-elevation-z8" src="../../../assets/istockphoto-1255688156-170667a.jpg" />
-  
-          <h4 class="name text-responsive">John Doe</h4>
-          <p class="designation">Admin</p>
-  
-          <mat-divider></mat-divider>
-        </div>
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="256px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    <div class="sidebar-logo">
     
-        <mat-icon>logout</mat-icon> Sign Out
+      <div class = "logo">
+        <span>LMS</span>
+      </div>
+
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/welcome">Welcome</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Monitor</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Workplace</a>
+          </li>
+        </ul>
+      </li>
+
+
+      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a>Basic Form</a>
+          </li>
+        </ul>
+      </li>
+
       
-     
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+            <i class="trigger"
+               nz-icon
+               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            ></i>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

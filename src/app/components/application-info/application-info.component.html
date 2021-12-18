@@ -1,0 +1,129 @@
+<div class = "container-data">
+
+
+
+
+      <form #applyInfo = "ngForm"  (ngSubmit) = "submitInfo(applyInfo.value)">
+
+         <div class = "radio-container">
+
+         <label id="example-radio-group-label">What is your Gender ?</label>
+          <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group" name = "gender" ngModel color = "primary">
+       
+             <mat-radio-button class="example-radio-button" value = "male">Male</mat-radio-button>
+
+             <mat-radio-button class="example-radio-button" value = "female">Female</mat-radio-button>
+
+
+          </mat-radio-group>
+
+         </div>
+
+
+         <div class = "radio-container">
+
+            <label id="example-radio-group-label">What is your age ?</label>
+             <mat-radio-group
+             aria-labelledby="example-radio-group-label"
+             class="example-radio-group" name = "age" ngModel color = "primary">
+          
+                <mat-radio-button class="example-radio-button" value = "18 - 25 Years">18 - 25 Years</mat-radio-button>
+   
+                <mat-radio-button class="example-radio-button" value = "25 - 30 Years">25 - 30 Years</mat-radio-button>
+   
+                <mat-radio-button class="example-radio-button" value = "30 - 40 Years">18 - 25 Years</mat-radio-button>
+   
+                <mat-radio-button class="example-radio-button" value = "40+ Years" >40+ Years</mat-radio-button>
+   
+
+             </mat-radio-group>
+   
+        </div>
+
+
+        <div class = "radio-container">
+
+         <label id="example-radio-group-label">What is your age ?</label>
+          <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group" name = "marritalStatus" ngModel color = "primary">
+       
+             <mat-radio-button class="example-radio-button" value = "Single">Single</mat-radio-button>
+
+             <mat-radio-button class="example-radio-button" value = "Single">Married</mat-radio-button>
+
+        
+
+          </mat-radio-group>
+
+        </div>
+
+
+        
+        <div class = "radio-container">
+
+         <label id="example-radio-group-label">What is your employment status ?</label>
+          <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group" name = "employmentStatus" ngModel color = "primary">
+       
+             <mat-radio-button class="example-radio-button" value = "Part-time">Part-time</mat-radio-button>
+
+             <mat-radio-button class="example-radio-button" value = "Full-time">Full-time</mat-radio-button>
+
+             <mat-radio-button class="example-radio-button" value = "Self-employed">Self-employed</mat-radio-button>
+
+             <mat-radio-button class="example-radio-button" value = "Unemployed">Unemployed</mat-radio-button>
+
+      
+          </mat-radio-group>
+
+        </div>
+
+                 
+        <div class = "radio-container">
+
+         <label id="example-radio-group-label">What is your employment status ?</label>
+          <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group" name = "yearsEmployed" ngModel color = "primary">
+       
+             <mat-radio-button class="example-radio-button" value = "1 year"> 1 Year</mat-radio-button>
+
+             <mat-radio-button class="example-radio-button" value = " 1- 3 years "> 1 - 3 years</mat-radio-button>
+
+             <mat-radio-button class="example-radio-button" value = " 3+ years"> 3+ Years</mat-radio-button>
+      
+          </mat-radio-group>
+
+        </div>
+
+
+
+
+        
+        
+
+
+
+
+        
+          <div>
+
+            <button class = "btn btn-primary" type = "submit">Add Details</button>
+
+
+          </div>
+
+      
+      
+        </form>
+
+   
+     
+
+
+
+</div>
