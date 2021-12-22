@@ -40,3 +40,33 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+
+
+$white: #ffffff;
+$red: #ce0000;
+.snackbar-success {
+  background-color: #11a10c !important;
+}
+
+.mat-snack-bar-container {
+  text-align: center;
+}
+
+.mat-simple-snackbar {
+  display: inline-block !important;
+  font-size: 18px !important;
+  color: $white;
+}
+
+.snackbar-danger {
+  background-color: $red !important;
+  text-align: center !important;
+}
+.error {
+  color: #ce0000;
+}
+
+.form-control.ng-touched.ng-invalid {
+  border: 2px #ce0000 !important;
+}

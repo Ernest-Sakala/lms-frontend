@@ -10,7 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -25,6 +25,14 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { AntModule } from './material/ant/ant.module';
 import { LoansComponent } from './components/loans/loans.component';
 import { ApplicationInfoComponent } from './components/application-info/application-info.component'
+import { ApplicationGuard } from './guard/application.guard';
+import { AuthGuard } from './guard/auth.guard';
+import { PschometricAnalysisComponent } from './components/pschometric-analysis/pschometric-analysis.component';
+import { TokenIntercepterService } from './security/token-intercepter.service';
+import { UsersComponent } from './components/users/users.component';
+import { ApplyLoanComponent } from './components/apply-loan/apply-loan.component';
+import { AddSubscriptionComponent } from './components/add-subscription/add-subscription.component';
+import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
 
 registerLocaleData(en);
 
@@ -38,7 +46,12 @@ registerLocaleData(en);
     AdminComponent,
     ClientComponent,
     LoansComponent,
-    ApplicationInfoComponent
+    ApplicationInfoComponent,
+    PschometricAnalysisComponent,
+    UsersComponent,
+    ApplyLoanComponent,
+    AddSubscriptionComponent,
+    SubscriptionsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,25 +66,36 @@ registerLocaleData(en);
       [
         {path : '', component : HomeComponent },
         {path : 'register' , component : RegisterComponent},
-        {path : 'register/application-info' , component : ApplicationInfoComponent},
+        {
+          path : 'register/application-info/:id' ,
+          component : ApplicationInfoComponent,
+          canActivate : [ApplicationGuard]
+        },
         {path : 'login' , component : LoginComponent},
         {
           path : 'admin' , 
           component : AdminComponent,
           'children' : [
 
-            {path : '', component :LoansComponent}
+            {path : '', component :UsersComponent},
+            {path : 'add-subscription', component :AddSubscriptionComponent}
 
-          ]
+          ],
+           canActivate : [AuthGuard]
+           
         },
         {
           path : 'client' , 
-          component : AdminComponent,
+          component : ClientComponent,
           'children' : [
 
-            {path : '', component :LoansComponent}
+            {path : '', component :LoansComponent},
 
-          ]
+            {path : 'analysis', component :PschometricAnalysisComponent}
+
+
+          ],
+          canActivate : [AuthGuard]
         }
    
       ]
@@ -81,7 +105,13 @@ registerLocaleData(en);
     NzLayoutModule,
     NzMenuModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [ApplicationGuard,AuthGuard,{ provide: NZ_I18N, useValue: en_US },
+    {
+    provide : HTTP_INTERCEPTORS,
+    useClass : TokenIntercepterService,
+    multi : true
+  },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

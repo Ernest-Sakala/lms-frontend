@@ -31,7 +31,7 @@
       <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
+            <a routerLink = "add-subscription">Add Subscription</a>
           </li>
         </ul>
       </li>
@@ -40,6 +40,8 @@
     </ul>
   </nz-sider>
   <nz-layout>
+
+    
     <nz-header>
       <div class="app-header">
         <span class="header-trigger" (click)="isCollapsed = !isCollapsed">

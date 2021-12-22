@@ -2,19 +2,41 @@
 
 
 
-
-
-
-  <form>
+  <form #register = "ngForm" (ngSubmit) = "registerUser(register.value)">
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <label for="exampleInputEmail1" class="form-label">Username</label>
+      <input type="text" class="form-control" name = "username" ngModel id="exampleInputEmail1" aria-describedby="emailHelp">
     
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
+      <label for="exampleInputPassword1" class="form-label">Email</label>
+      <input type="email" class="form-control" name = "email" ngModel id="exampleInputPassword1">
     </div>
+
+    <div class="mb-3">
+      <label for="exampleInputPassword2" class="form-label">Phone</label>
+      <input type="text" class="form-control" name="phone" ngModel id="exampleInputPassword2">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputPassword3" class="form-label">Password</label>
+      <input type="password" class="form-control" name="password" ngModel id="exampleInputPassword3">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputPassword4" class="form-label"> Retype Password</label>
+      <input type="password" class="form-control" name="password2" ngModel id="exampleInputPassword4">
+    </div>
+
+      <div *ngIf="loading" class="loader">
+      
+      
+        <mat-spinner class="loading-progress" color="primary" diameter="30"></mat-spinner>
+      
+        <h3>Processing please wait.......</h3>
+      
+      </div>
+
    
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

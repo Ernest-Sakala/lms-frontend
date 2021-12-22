@@ -5,16 +5,17 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTableModule} from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { MatSnackBarModule} from '@angular/material/snack-bar';
-import { MatListModule } from '@angular/material/list';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatListModule } from '@angular/material/list';
 import {MatRadioModule} from '@angular/material/radio';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 const MaterialComponents = [
   MatButtonModule,
   MatToolbarModule,
   MatIconModule,
   MatSidenavModule,
+  MatCheckboxModule,
   MatTableModule,
   MatProgressSpinnerModule,
   MatSnackBarModule,

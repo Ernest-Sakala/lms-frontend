@@ -1,0 +1,25 @@
+<div class="container">
+
+
+
+    <form #subscription="ngForm" (ngSubmit)="addSubscription(subscription.value)">
+
+
+
+        <div class="mb-3">
+            <label for="exampleInputPeriod" class="form-label"> Period</label>
+            <input type="text" class="form-control" name="period" ngModel id="exampleInputPeriod">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputInterestng" class="form-label"> interest</label>
+            <input type="text" class="form-control" name="interest" ngModel id="exampleInputInterest">
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+

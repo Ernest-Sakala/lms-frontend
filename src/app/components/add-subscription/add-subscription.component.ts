@@ -2,50 +2,38 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { NavbarService } from 'src/app/service/navbar.service';
+import { SubscriptionService } from 'src/app/service/subscription.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-add-subscription',
+  templateUrl: './add-subscription.component.html',
+  styleUrls: ['./add-subscription.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class AddSubscriptionComponent implements OnInit {
 
-durationInSeconds = 5;
+  durationInSeconds = 5;
   danger : boolean = true;
   loading : boolean = false;
 
-  constructor(private service : UserService , private _snackBar: MatSnackBar, private router : Router ) { }
+  constructor(private service : SubscriptionService , private _snackBar: MatSnackBar, private router : Router ) { }
 
   ngOnInit(): void {
   }
 
-  loginUser(data : any){
+  addSubscription(data : any){
 
     console.log(data);
 
     this.loading = true;
 
-    this.service.login(data).subscribe(response => {
+    this.service.addSubscription(data).subscribe(response => {
 
         this.loading = false;
         this.danger = false;
         console.log(response);
 
-        localStorage.setItem('token', response.token)
-
-        this.openSnackBar("You have successfully logged in");
-
-        if(response.roles[0].match("ROLE_CLIENT")){
-
-        this.router.navigateByUrl('/client')
-        
-        }else if (response.roles[0].match("ROLE_ADMIN")){
-
-        this.router.navigateByUrl('/admin')
-        }
-      
+        this.openSnackBar(response.message);
 
         
 
@@ -71,7 +59,8 @@ durationInSeconds = 5;
 
     this._snackBar.open(message, undefined, configureSnackBar);
   }
+ }
 
 
-  
-}
+
+

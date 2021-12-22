@@ -1,21 +1,26 @@
 
 
-<div>
+<div class="container">
 
 
 
     <form  #login="ngForm" (ngSubmit) = "loginUser(login.value)" >
 
-        <div id="result" style="display: none"></div>
+        
     
-        <label> Type your Email</label>
-        <input class ="pass" type="text" ngModel name="email" /> <br />
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"> Email</label>
+          <input type="email" class="form-control" name="email" ngModel id="exampleInputEmail1">
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"> Password</label>
+          <input type="password" class="form-control" name="password" ngModel id="exampleInputPassword1">
+        </div>
+
     
-        <label> Type your password</label>
-        <input class ="pass" type="password" ngModel name="password"/><br />
-    
-        <input class ="btn" type="submit"  value="Login"/>
-    
+      
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     
 </div>
