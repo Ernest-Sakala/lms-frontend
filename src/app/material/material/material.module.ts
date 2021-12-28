@@ -8,6 +8,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatListModule } from '@angular/material/list';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 
 const MaterialComponents = [
@@ -20,7 +21,8 @@ const MaterialComponents = [
   MatProgressSpinnerModule,
   MatSnackBarModule,
   MatListModule,
-  MatRadioModule 
+  MatRadioModule,
+  MatSlideToggleModule 
 
 ]
 

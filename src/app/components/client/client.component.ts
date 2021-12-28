@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavbarService } from 'src/app/service/navbar.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class ClientComponent implements OnInit {
   isCollapsed = false
  
 
-  constructor(public nav : NavbarService) {
+  constructor(public nav : NavbarService,private router : Router) {
       this.nav.hide()
   }
 
@@ -21,5 +22,9 @@ export class ClientComponent implements OnInit {
    
   }
 
+  logout(){
+    localStorage.removeItem("token")
+    this.router.navigateByUrl("/login")
+  }
 
 }

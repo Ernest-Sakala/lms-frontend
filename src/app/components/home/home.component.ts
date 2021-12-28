@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'src/app/model/subscription';
 import { NavbarService } from 'src/app/service/navbar.service';
+import { SubscriptionService } from 'src/app/service/subscription.service';
+
 
 @Component({
   selector: 'app-home',
@@ -8,23 +11,47 @@ import { NavbarService } from 'src/app/service/navbar.service';
 })
 export class HomeComponent implements OnInit {
 
+
   loan : String = "4000"
   monthNumber! : Number 
-  months = [
-    {id: 1, months: "5"},
-    {id: 2, months: "6"},
-    {id: 3, months: "7"},
-    {id: 4, months: "8"},
-    {id: 5, months: "9"}
- ];
+   payments : number = 0;
+  loanAmount : number = 0;
+  interest : number = 0;
+  selectedValue! : Subscription;
+  amount : number = 0;
+  subscriptions! : Subscription[]
 
 
-  constructor(public nav : NavbarService) {
+
+  constructor(public nav : NavbarService,   private subscriptionService : SubscriptionService) {
     nav.show()
    }
 
   ngOnInit(): void {
+    this.getSubscription()
   }
+
+
+
+   getSubscription(){
+      this.subscriptionService.getSubscriptions().subscribe(response=> {
+        console.log(response)
+        this.subscriptions = response
+
+      })
+    }
+
+     calculateLoan(){
+       //console.log(data)
+       console.log(this.amount)
+       console.log(this.selectedValue)
+
+       this.interest = (this.amount * Number.parseInt(this.selectedValue.interest))/100
+       this.loanAmount = Number.parseInt(this.amount.toString())  + Number.parseInt(this.interest.toString())
+       this.payments = this.loanAmount/Number.parseInt(this.selectedValue.period)
+       
+     }
+
 
 
   changed(){

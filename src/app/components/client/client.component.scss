@@ -82,6 +82,10 @@ nz-header {
 .app-header {
   position: relative;
   height: 64px;
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: space-between;
   padding: 0;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
@@ -95,4 +99,16 @@ nz-content {
   padding: 24px;
   background: #fff;
   height: 100%;
+overflow: scroll;
 }
+
+.logout{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 80px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+

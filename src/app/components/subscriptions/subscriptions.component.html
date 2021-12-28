@@ -1,1 +1,63 @@
-<p>subscriptions works!</p>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Period</th>
+      <th scope="col">Interest</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let subscription of subscriptions">
+      <th scope="row">{{ subscription.id }}</th>
+      <td>{{ subscription.period }}</td>
+      <td>{{ subscription.interest }}</td>
+      <td>
+        <button class="btn btn-primary m-1" (click)="showModal(subscription)">Edit</button>
+        <button (click) = "showDeleteConfirm(subscription)" class="btn btn-danger m-1">Delete</button>
+      </td>
+
+      <nz-modal
+        [(nzVisible)]="isVisible"
+        nzTitle="Edit subscription"
+        (nzOnCancel)="handleCancel()"
+        (nzOnOk)="handleOk()"
+      >
+        <ng-container *nzModalContent>
+          <form #subscriptionForm="ngForm" (ngSubmit) = "editSubscription(subscriptionForm.value)"> 
+            <div class="mb-3">
+              <label for="exampleInputPeriod" class="form-label"> Period</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="{{ subscriptionModel.period }}"
+                value="{{ subscriptionModel.period }}"
+                name="period"
+                ngModel
+                id="exampleInputPeriod"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputInterestng" class="form-label">
+                interest</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                name="interest"
+                placeholder="{{ subscriptionModel.interest }}"
+                value="{{ subscriptionModel.interest }}"
+                ngModel
+                id="exampleInputInterest"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </ng-container>
+      </nz-modal>
+     
+    </tr>
+  </tbody>
+</table>

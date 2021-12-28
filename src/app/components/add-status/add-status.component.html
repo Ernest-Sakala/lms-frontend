@@ -1,0 +1,22 @@
+<div class="container">
+
+
+
+    <form #status="ngForm" (ngSubmit)="addStatus(status.value)">
+
+
+
+        
+
+        <div class="mb-3">
+            <label for="exampleInputStatus" class="form-label"> Status Name</label>
+            <input type="text" class="form-control" name="statusName" ngModel id="exampleInputStatus">
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+

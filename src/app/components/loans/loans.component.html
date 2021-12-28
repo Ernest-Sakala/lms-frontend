@@ -1,32 +1,217 @@
 <table class="table table-striped">
-    <thead>
+  <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Country</th>
-      <th scope="col">Area</th>
-      <th scope="col">Population</th>
+      <th scope="col">id</th>
+      <th scope="col">Loan amount</th>
+      <th scope="col">Date Borrowed</th>
+      <th scope="col">Payment Date</th>
+      <th scope="col">Payments</th>
+      <th scope="col">Interest</th>
+      <th scope="col">Total Amount</th>
+      <th scope="col">Is Paid</th>
+      <th scope="col">Loan Status</th>
+      <th scope="col" *ngIf="isAdmin">Action</th>
     </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let country of countries">
-      <th scope="row">{{ country.id }}</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let loan of loans">
+      <th scope="row">{{ loan.id }}</th>
       <td>
-        <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
-        {{ country.name }}
+        {{ loan.loanAmount }}
       </td>
-      <td>{{ country.area | number}}</td>
-      <td>{{ country.population | number }}</td>
+      <td>{{ loan.borrowedDate }}</td>
+      <td>{{ loan.paymentDate }}</td>
+      <td>{{ loan.payments }}</td>
+      <td>{{ loan.interest }}</td>
+      <td>{{ loan.totalAmount }}</td>
+      <td>{{ loan.isPaid }}</td>
+      <td>{{ loan.loanStatus }}</td>
+      <td *ngIf="isAdmin">
+        <button class="btn btn-primary m-3" (click)="showModal(loan)">
+          Update Loan
+        </button>
+
+        <button class="btn btn-primary m-3" (click) = "showUserModal(loan.user)" >Client Details</button>
+
+        <button
+          class="btn btn-primary m-3"
+          (click)="showReviewModal(loan.question)"
+        >
+          Review Details
+        </button>
+
+        <nz-modal
+          [(nzVisible)]="isVisible"
+          nzTitle="Update Loan"
+          (nzOnCancel)="handleCancel()"
+          (nzOnOk)="handleOk()"
+        >
+          <ng-container *nzModalContent>
+            <form
+              #loanForm="ngForm"
+              (ngSubmit)="editLoanSubmit(loanForm.value)"
+            >
+              <div class="update mb-3">
+                <div class="paid">
+                  <div>Client Paid</div>
+
+                  <mat-slide-toggle
+                    class="example-margin"
+                    [checked]="checked"
+                    [disabled]="disabled"
+                  >
+                  </mat-slide-toggle>
+
+                  {{ userPaid }}
+                </div>
+
+                <div>
+                  <label for="exampleInputStatus" class="form-label">
+                    Choose Loan Status
+                  </label>
+
+                  <select
+                    class="form-select"
+                    name="selectedValue"
+                    id="selectedValue"
+                    [(ngModel)]="selectedValue"
+                    aria-label="Default select example"
+                  >
+                    <option selected>Open this select menu</option>
+                    <option
+                      *ngFor="let status of statuses"
+                      [ngValue]="status"
+                      value="1"
+                    >
+                      {{ status.statusName }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </ng-container>
+        </nz-modal>
+        
+        <nz-modal
+          [(nzVisible)]="isVisibleUser"
+          nzTitle="Update Loan"
+          (nzOnCancel)="handleCancelUser()"
+          (nzOnOk)="handleOk()"
+        >
+          <ng-container *nzModalContent>
+
+             <div class="answer-container">
+              <div class="answer">
+                <div> Username </div>
+                <div>{{ userModel.username }}</div>
+              </div>
+
+              <div class="answer">
+                <div> Email </div>
+                <div>{{ userModel.email  }}</div>
+              </div>
+
+               <div class="answer">
+                <div> Phone </div>
+                <div>{{ userModel.phone }}</div>
+              </div>
+
+
+           </div>
+
+          </ng-container>
+        </nz-modal>
+
+        <nz-modal
+          [(nzVisible)]="isReviewVisible"
+          nzTitle="User Answers"
+          (nzOnCancel)="hideReviewModal()"
+          (nzOnOk)="canGetLoan(answersModel)"
+        >
+          <ng-container *nzModalContent>
+            <div class="answer-container">
+              <div class="answer">
+                <div>How often do you save ?</div>
+                <div>{{ answersModel.savingDone }}</div>
+              </div>
+
+              <div class="answer">
+                <div>What is your current saving balance?</div>
+                <div>{{ answersModel.savingBalance }}</div>
+              </div>
+
+              <div class="answer">
+                <div>What do you usually get credit for ?</div>
+                <div>{{ answersModel.creditReason }}</div>
+              </div>
+
+              <div class="answer">
+                <div>I usually pay my bills on time ?</div>
+                <div>{{ answersModel.billRepayment }}</div>
+              </div>
+
+              <div class="answer">
+                <div>
+                  You received a gift of k10,000,What do you do with it ?
+                </div>
+                <div>{{ answersModel.giftPurpose }}</div>
+              </div>
+
+              <div class="answer">
+                <div>I make my bed every morning ?</div>
+                <div>{{ answersModel.bedMaking }}</div>
+              </div>
+
+              <div class="answer">
+                <div>I often feel frustrated in traffic?</div>
+                <div>{{ answersModel.trafficFrustration }}</div>
+              </div>
+
+              <div class="answer">
+                <div>Have you ever been late on any payment,rent,Fees?</div>
+                <div>{{ answersModel.lateRepayment }}</div>
+              </div>
+
+              <div class="answer">
+                <div>
+                  Please select the social media plattoforms you are on handles?
+                </div>
+                <div>{{ answersModel.socialMedia }}</div>
+              </div>
+
+              <div class="answer">
+                <div>Can Acquire loan?</div>
+                <div>{{ answersModel.canAcquireLoan }}</div>
+              </div>
+            </div>
+          </ng-container>
+        </nz-modal>
+
+
+      </td>
     </tr>
-    </tbody>
-  </table>
-  
-  <div class="d-flex justify-content-between p-2">
-    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
-    </ngb-pagination>
-  
-    <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
-      <option [ngValue]="2">2 items per page</option>
-      <option [ngValue]="4">4 items per page</option>
-      <option [ngValue]="6">6 items per page</option>
-    </select>
-  </div>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2">
+  <ngb-pagination
+    [collectionSize]="collectionSize"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    (pageChange)="refreshLoans()"
+  >
+  </ngb-pagination>
+
+  <select
+    class="custom-select"
+    style="width: auto"
+    [(ngModel)]="pageSize"
+    (ngModelChange)="refreshLoans()"
+  >
+    <option [ngValue]="2">2 items per page</option>
+    <option [ngValue]="4">4 items per page</option>
+    <option [ngValue]="6">6 items per page</option>
+  </select>
+</div>

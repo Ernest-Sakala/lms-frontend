@@ -1,8 +1,7 @@
-export interface LoginModel {
-
-    id : number
+export interface LoginModel { 
+     id : number
     email : string
     username : string
     token : string
-    roles : string []
+    roles : string []   
 }

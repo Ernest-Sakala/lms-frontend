@@ -16,9 +16,10 @@ durationInSeconds = 5;
   danger : boolean = true;
   loading : boolean = false;
 
-  constructor(private service : UserService , private _snackBar: MatSnackBar, private router : Router ) { }
+  constructor(private nav : NavbarService, private service : UserService , private _snackBar: MatSnackBar, private router : Router ) { }
 
   ngOnInit(): void {
+    this.nav.show()
   }
 
   loginUser(data : any){
@@ -34,6 +35,7 @@ durationInSeconds = 5;
         console.log(response);
 
         localStorage.setItem('token', response.token)
+        localStorage.setItem('role', response.roles[0])
 
         this.openSnackBar("You have successfully logged in");
 

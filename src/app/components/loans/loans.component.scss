@@ -1,0 +1,40 @@
+button{
+    width: 150px !important;
+}
+
+
+.update{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height:150px;
+    justify-content: space-evenly;
+
+}
+
+.paid{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    width:150px;
+    justify-content: space-evenly;
+
+}
+
+
+.answer-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+     height: 500px;
+}
+
+.answer{
+    display: flex;
+    padding: 10px;
+    border: 1px solid green;
+    flex-direction: row;
+    align-items: center;
+    width: 400px;
+    justify-content: space-between;
+}

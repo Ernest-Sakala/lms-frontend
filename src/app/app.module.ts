@@ -27,12 +27,22 @@ import { LoansComponent } from './components/loans/loans.component';
 import { ApplicationInfoComponent } from './components/application-info/application-info.component'
 import { ApplicationGuard } from './guard/application.guard';
 import { AuthGuard } from './guard/auth.guard';
-import { PschometricAnalysisComponent } from './components/pschometric-analysis/pschometric-analysis.component';
+import { PschometricAnalysisComponent } from './components/phsychometric-analysis/pschometric-analysis.component';
 import { TokenIntercepterService } from './security/token-intercepter.service';
 import { UsersComponent } from './components/users/users.component';
 import { ApplyLoanComponent } from './components/apply-loan/apply-loan.component';
 import { AddSubscriptionComponent } from './components/add-subscription/add-subscription.component';
 import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
+import { StatusComponent } from './components/status/status.component';
+import { ApplyComponent } from './components/apply/apply.component';
+import { AddStatusComponent } from './components/add-status/add-status.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { RepayComponent } from './components/repay/repay.component';
+import { ReviewComponent } from './components/review/review.component';
+
+
 
 registerLocaleData(en);
 
@@ -51,7 +61,12 @@ registerLocaleData(en);
     UsersComponent,
     ApplyLoanComponent,
     AddSubscriptionComponent,
-    SubscriptionsComponent
+    SubscriptionsComponent,
+    StatusComponent,
+    ApplyComponent,
+    AddStatusComponent,
+    RepayComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +74,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    FontAwesomeModule,
     FlexLayoutModule,
     FormsModule,
     AntModule,
@@ -78,8 +94,14 @@ registerLocaleData(en);
           'children' : [
 
             {path : '', component :UsersComponent},
-            {path : 'add-subscription', component :AddSubscriptionComponent}
-
+            {path : 'subscriptions', component :SubscriptionsComponent},
+            {path : 'add-subscription', component :AddSubscriptionComponent},
+            {path : 'status', component :StatusComponent},
+            {path : 'add-status', component :AddStatusComponent},
+            {path : 'loans', component :LoansComponent},
+            {path : 'users', component : UsersComponent},
+            {path : 'admin/review', component :LoansComponent},
+          
           ],
            canActivate : [AuthGuard]
            
@@ -90,20 +112,24 @@ registerLocaleData(en);
           'children' : [
 
             {path : '', component :LoansComponent},
-
-            {path : 'analysis', component :PschometricAnalysisComponent}
+            {path : 'loans', component :LoansComponent},
+            {path : 'analysis', component :PschometricAnalysisComponent},
+            {path : 'apply/:id', component :ApplyLoanComponent}
 
 
           ],
           canActivate : [AuthGuard]
-        }
+        },
+
+        {path : 'repayments-infor', component : RepayComponent}
    
       ]
     ),
     NgbModule,
     IconsProviderModule,
     NzLayoutModule,
-    NzMenuModule
+    NzMenuModule,
+    FontAwesomeModule
   ],
   providers: [ApplicationGuard,AuthGuard,{ provide: NZ_I18N, useValue: en_US },
     {
@@ -114,4 +140,8 @@ registerLocaleData(en);
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+
+
+ }

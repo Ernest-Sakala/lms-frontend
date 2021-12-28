@@ -1,4 +1,4 @@
-import { SubscritionApi } from './subscrition-api';
+import { SubscritionApi } from './subscription-api';
 
 describe('SubscritionApi', () => {
   it('should create an instance', () => {

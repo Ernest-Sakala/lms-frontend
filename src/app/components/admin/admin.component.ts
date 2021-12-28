@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs/internal/Subscription';
-import { filter, map } from 'rxjs/operators';
 import { NavbarService } from 'src/app/service/navbar.service';
 
 @Component({
@@ -15,7 +12,7 @@ export class AdminComponent implements OnInit {
   isCollapsed = false
  
 
-  constructor(public nav : NavbarService) {
+  constructor(public nav : NavbarService, private router : Router) {
       this.nav.hide()
   }
 
@@ -23,6 +20,11 @@ export class AdminComponent implements OnInit {
    
   }
 
+
+  logout(){
+    localStorage.removeItem("token")
+    this.router.navigateByUrl("/login")
+  }
  
 
 }

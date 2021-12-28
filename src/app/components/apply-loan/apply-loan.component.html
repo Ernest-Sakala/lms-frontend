@@ -1,1 +1,49 @@
-<p>apply-loan works!</p>
+<form #register="ngForm" >
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Loan Amount</label>
+        <input type="text" class="form-control" name="amount" [(ngModel)] = "amount"  id="exampleInputEmail1"
+            aria-describedby="emailHelp">
+
+    </div>
+
+    
+
+<select class="form-select"  name="selectedValue" id="selectedValue" [(ngModel)]="selectedValue" (ngModelChange) = "calculateLoan()"  aria-label="Default select example">
+    <option selected>Open this select menu</option>
+    <option  *ngFor = "let subscription of subscriptions" [ngValue]="subscription"  value="1">{{subscription.period }}   Months   {{subscription.interest}} Interest</option>
+    
+</select>
+
+<table class="table table-striped">
+    <thead>
+     
+        <th> Amount</th> 
+        <th> Interest</th>
+        <th> Payments</th>
+    </thead>
+
+    <tbody>
+
+        <tr>
+           <td>{{loanAmount}} </td> 
+           <td>{{interest}}</td>
+           <td> {{payments}}</td>
+        </tr>
+        
+    </tbody>
+</table>
+
+
+    <div *ngIf="loading" class="loader">
+
+
+        <mat-spinner class="loading-progress" color="primary" diameter="30"></mat-spinner>
+
+        <h3>Processing please wait.......</h3>
+
+    </div>
+
+
+    <button (click)= "applyLoan()" type="submit" class="btn btn-primary">Submit</button>
+</form>
+

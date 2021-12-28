@@ -1,201 +1,170 @@
-<div class = "container-hero">
+<div class="container-hero">
+  <div class="form-container">
+    <div class="content">
+      <label>How much do you need ?</label>
 
-
-     <div class = "form-container">
-
-        <div class = "content">
-
-          <label>How much do you need ?</label>
-
-          <input [(ngModel)] = "loan"> 
-
-        </div>
-        
-        <div class = "content sub">
-
-          <label>Subscription Plan</label>
-
-          <select [(ngModel)] = "monthNumber"  (change) = "changed()">
-           
-             <option *ngFor = "let month of months"> {{ month.months}} <option>
-          </select>
-
-        </div>
-
-   
-        <div  class = "content border-container">
-
-          <h3>Interest</h3>
-
-          <h2>1000</h2>
-        </div>
-
-        
-
-        <div  class = "content border-container">
-
-          <h3>Total To Repay</h3>
-
-          <h2>1000</h2>
-        </div>
-
-       
-        <div  class = "content border-container bottom-container">
-
-          <h3>Repayment Date</h3>
-
-          <h2>1000</h2>
-        </div>
-
-
-        
-       <a routerLink="register"><button>Apply Now</button></a>  
-
-
-        <div  class = "content">
-
-          <h3>New User</h3>
-
-          <h2>(K500 - K 5,000)</h2>
-        </div>
-
-      
-        <div  class = "content ">
-
-          <h3>Returning User </h3>
-
-          <h2>(K500 - 15, 000)</h2>
-        </div>
-
-
-
-     </div>
-        
-  
-
-   
-
-</div>
-
-
-
-
-<div class = "slider-container">
-
-    <ngb-carousel class = "slider">
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img src="../../../assets/istockphoto-1255688156-170667a.jpg" alt="Random first slide">
-          </div>
-          <div class="carousel-caption">
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </div>
-        </ng-template>
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img src="../../../assets/istockphoto-1255688156-170667a.jpg" alt="Random second slide">
-          </div>
-          <div class="carousel-caption">
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </ng-template>
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img src="../../../assets/istockphoto-1255688156-170667a.jpg" alt="Random third slide">
-          </div>
-          <div class="carousel-caption">
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </div>
-        </ng-template>
-      </ngb-carousel>
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-<div class = "cards">
-
-
-    <div class = "card">
-
-
-        <img src = "../../../assets/istockphoto-1145371340-170667a.jpg">
-
-
-        <div>
-
-           <h2> Reliable Money Deals </h2> 
-
-
-        </div>
-
+      <input name="amount" [(ngModel)]="amount" />
     </div>
 
+    <div class="content sub">
+      <label>Subscription Plan</label>
 
-
-    <div class = "card">
-
-
-        <img src = "../../../assets/istockphoto-1255688156-170667a.jpg">
-
-
-        <div>
-
-
-           <h2>Information Availble</h2> 
-
-
-        </div>
-
+      <select
+        class="form-select"
+        name="selectedValue"
+        id="selectedValue"
+        [(ngModel)]="selectedValue"
+        (ngModelChange)="calculateLoan()"
+        aria-label="Default select example"
+      >
+        <option selected>Open this select menu</option>
+        <option
+          *ngFor="let subscription of subscriptions"
+          [ngValue]="subscription"
+          value="1"
+        >
+          {{ subscription.period }} Months {{ subscription.interest }} Interest
+        </option>
+      </select>
     </div>
 
+    <div class="content border-container">
+      <h3>Interest</h3>
 
-
-
-
-
-    <div class = "card">
-
-
-        <img src = "../../../assets/istockphoto-1316644624-170667a.jpg">
-
-
-        <div>
-
-
-           <h2>  Piggy Bank Empty Contact Us </h2>
-
-        </div>
-
+      <h2>{{ interest }}</h2>
     </div>
 
+    <div class="content border-container">
+      <h3>Total To Repay</h3>
 
+      <h2>{{ loanAmount }}</h2>
+    </div>
 
+    <div class="content border-container bottom-container">
+      <h3>Payments</h3>
+
+      <h2>{{ payments }}</h2>
+    </div>
+
+    <a routerLink="register"><button>Apply Now</button></a>
+
+    <div class="content">
+      <h3>New User</h3>
+
+      <h2>(K500 - K 5,000)</h2>
+    </div>
+
+    <div class="content">
+      <h3>Returning User</h3>
+
+      <h2>(K500 - 15, 000)</h2>
+    </div>
+  </div>
 </div>
 
+<div class="slider-container">
+  <ngb-carousel class="slider">
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img
+          src="../../../assets/istockphoto-1255688156-170667a.jpg"
+          alt="Random first slide"
+        />
+      </div>
+      <div class="carousel-caption">
+        <h3>Reliable Team</h3>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img
+          src="../../../assets/istockphoto-1255688156-170667a.jpg"
+          alt="Random second slide"
+        />
+      </div>
+      <div class="carousel-caption">
+        <h3>Fast Application Response</h3>
+        
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img
+          src="../../../assets/istockphoto-1255688156-170667a.jpg"
+          alt="Random third slide"
+        />
+      </div>
+      <div class="carousel-caption">
+        <h3>Very Reliable Services</h3>
+        
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
 
-
-<footer>
-
+<div class="cards">
+  <div class="card">
+    <img src="../../../assets/istockphoto-1145371340-170667a.jpg" />
 
     <div>
+      <h2>Reasonable Interest Rates</h2>
+    </div>
+  </div>
+
+  <div class="card">
+    <a routerLink="repayments-infor">
+      <img src="../../../assets/istockphoto-1255688156-170667a.jpg" />
+    </a>
+
+    <div>
+      <h2>FAQs</h2>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="../../../assets/istockphoto-1316644624-170667a.jpg" />
+
+    <div>
+      <h2>Personal Loans Offered </h2>
+    </div>
+  </div>
+</div>
+
+<footer class="page-footer font-small cyan darken-3">
+  <!-- <div class="container">
         
         Images From Splash Website For Illustration Only
 
 
     </div>
 
+    <div class="container">
+    
+      Images From Splash Website For Illustration Only
+    
+    
+    </div> -->
+  <div class="footer-dark">
+    <footer>
+      <div class="container">
+        <div class="row">
+          <fa-icon [icon]="['fas', 'twitter']"></fa-icon>
+          <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
 
-
+          <div class="col item social">
+            <a href="https://web.facebook.com/Events-Exotique-101717318876948"
+              ><i nz-icon nzType="facebook" nzTheme="outline"></i
+            ></a>
+            <a href="https://twitter.com/?lang=en"
+              ><i class="icon" nz-icon nzType="twitter" nzTheme="outline"></i
+            ></a>
+            <a href="https://www.youtube.com/watch?v=RQTwvpDm9h0"
+              ><i class="icon" nz-icon nzType="youtube" nzTheme="outline"></i
+            ></a>
+          </div>
+        </div>
+        <p class="copyright">LMS.com © 2021</p>
+      </div>
+    </footer>
+  </div>
 </footer>

@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
     data.roles = [{
-      "id" : 2,
+      "id" : 3,
       "name" : "ROLE_CLIENT"
     }];
 

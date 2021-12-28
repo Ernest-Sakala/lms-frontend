@@ -20,7 +20,7 @@ export class UsersComponent implements OnInit {
   danger : boolean = true;
   loading : boolean = false;
   submitted: boolean = false;
-index : number = 0;
+  index : number = 0;
   users! : UserModel[];
   page = 1;
   pageSize = 4;
@@ -83,18 +83,6 @@ index : number = 0;
       console.log(response)
       this.danger = false
           
-      // for(let i = 0; i<this.usersSecond.length; i++){
-
-      //   if (this.usersSecond[i].id ===user.id){
-
-      //     this.index = i
-      //     this.users.slice(i, 1)
-      //     this.usersSecond.slice(i, 1)
-      //     this.refreshUsers()
-      //     break 
-      //   }
-      // }
-
       this.users = this.users.filter(currentUser => currentUser.id !== user.id)
       this.usersSecond = this.usersSecond.filter(currentUser => currentUser.id !== user.id)
 
@@ -105,15 +93,15 @@ index : number = 0;
       this.openSnackBar(error.message)
     })
   }
-openSnackBar(message : string) {
+  openSnackBar(message : string) {
 
-    const configureSnackBar = new MatSnackBarConfig();
-      configureSnackBar.duration = 5000;
-      configureSnackBar.horizontalPosition = 'center';
-      configureSnackBar.verticalPosition = 'bottom';
-      configureSnackBar.panelClass = this.danger? 'snackbar-danger' : 'snackbar-success';
+      const configureSnackBar = new MatSnackBarConfig();
+        configureSnackBar.duration = 5000;
+        configureSnackBar.horizontalPosition = 'center';
+        configureSnackBar.verticalPosition = 'bottom';
+        configureSnackBar.panelClass = this.danger? 'snackbar-danger' : 'snackbar-success';
 
-      this._snackBar.open(message, undefined, configureSnackBar);
-    }
+        this._snackBar.open(message, undefined, configureSnackBar);
+  }
   
 }

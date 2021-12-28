@@ -1,0 +1,204 @@
+<div class="container-data">
+
+
+
+
+    <form #applyInfo="ngForm" (ngSubmit)="submitInfo(applyInfo.value)">
+
+        <div class="radio-container">
+
+            <label id="example-radio-group-label">How often do you save ?</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" name="savingDone"
+                ngModel color="primary">
+
+                <mat-radio-button class="example-radio-button" value="Monthly">Monthly</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="WheneverI receive money">Whenever I receive money</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="I don't make enough to save">I don't make enough to save</mat-radio-button>
+            </mat-radio-group>
+
+        </div>
+
+
+        <div class="radio-container">
+
+            <label id="example-radio-group-label">What is your current savings balance ?</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" name="savingBalance" ngModel
+                color="primary">
+
+                <mat-radio-button class="example-radio-button" value="ZMW 0">ZMW 0</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="ZMW 0 - ZMW 2000">ZMW 0 - ZMW 2000</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="ZMW 2000 - ZMW 10 000">ZMW 2000 - ZMW 10 000</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="ZMW 10 000+">ZMW 10 000+</mat-radio-button>
+
+
+            </mat-radio-group>
+
+        </div>
+
+        <div class="radio-container">
+        
+            <label id="example-radio-group-label">What do you usually get credit for ?</label>
+        
+        
+            <mat-checkbox *ngFor="let credit of credits" name="credit" class="example-radio-button" value="{{credit.value}}"
+                [(ngModel)]="credit.checked">{{credit.name}}</mat-checkbox>
+        
+        
+        
+        </div>
+
+
+
+        <div class="radio-container">
+
+            <label id="example-radio-group-label">I usually pay my bills on time ?</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                name="billRepayment" ngModel color="primary">
+
+                <mat-radio-button class="example-radio-button" value="Strongly agree">Strongly agree</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="Somewhat agree">Somewhat agree</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="Neutral">Neutral</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="Somewhat Disagree">Somewhat Disagree</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="Strongly Disagree">Strongly Disagree</mat-radio-button>
+
+            </mat-radio-group>
+
+        </div>
+
+
+        <div class="radio-container">
+
+            <label id="example-radio-group-label">you recieve a gift of K10 000, what do you do with it ?</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                name="giftPurpose" ngModel color="primary">
+
+                <mat-radio-button class="example-radio-button" value="Buy something nice for yourself or a loved one"> Buy something nice for yourself or a loved one</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value=" Take a trip somewhere eg lower Zambezi"> Take a trip somewhere eg lower Zambezi</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="Deposit it in a bank"> Deposit it in a bank</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="Deposit it with your village bank"> Deposit it with your village bank</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="Buy government bonds or a treasury bill"> Buy government bonds or a treasury bill</mat-radio-button>
+
+            </mat-radio-group>
+
+        </div>
+
+        
+    
+        <div class="radio-container">
+
+            <label id="example-radio-group-label">I make my bed every morning?</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                name="bedMaking" ngModel color="primary">
+
+                <mat-radio-button class="example-radio-button" value="Strongly agree"> Strongly agree</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="Somewhat agree"> Somewhat agree</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="Neutral"> Neutral</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="Somewhat disagree"> Somewhat disagree</mat-radio-button>
+
+                
+
+            </mat-radio-group>
+
+        </div>
+
+        <div class="radio-container">
+
+            <label id="example-radio-group-label">I often feel frustrated in traffic?</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                name="trafficFrustration" ngModel color="primary">
+
+                <mat-radio-button class="example-radio-button" value="Strongly agree"> Strongly agree</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="Somewhat agree"> Somewhat agree</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="Neutral"> Neutral</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="Strongly disagree"> Somewhat disagree.</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="Strongly disagree"> Strongly disagree</mat-radio-button>
+
+            </mat-radio-group>
+
+
+        </div>
+
+
+
+        <div class="radio-container">
+
+            <label id="example-radio-group-label">Have you ever been late on any payment, fees, etc ?</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                name="lateRepayment" ngModel color="primary">
+
+                <mat-radio-button class="example-radio-button" value="Never"> Never</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="Once"> Once</mat-radio-button>
+
+                <mat-radio-button class="example-radio-button" value="More than once"> More than once</mat-radio-button>
+
+        
+            </mat-radio-group>
+
+        </div>
+
+        <div class="radio-container">
+
+            <label id="example-radio-group-label">Select social media platforms you are on ?</label>
+
+
+            <mat-checkbox *ngFor="let social of socials" name="socials" class="example-radio-button"
+
+
+                value="{{social.value}}" [(ngModel)]="social.checked">{{social.name}}</mat-checkbox>
+
+                
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div>
+
+            <button class="btn btn-primary" type="submit">Add Details</button>
+
+
+        </div>
+
+
+
+    </form>
+
+
+
+
+
+
+</div>
+
